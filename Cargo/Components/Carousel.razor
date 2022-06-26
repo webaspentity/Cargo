@@ -1,0 +1,103 @@
+﻿<div class="carousel">
+    <CascadingValue Value="@current">
+        <Arrow Class="arrow_left carousel__arrow" Disabled=@((current == 0) ? true : false) OnClick="LeftClickHandler" Label="Предыдущий слайд" />
+
+        <div class="carousel__items" style="transform: translate3d(@(transition)px,0,0)" @ontouchstart="OnTouchStartHandler" @ontouchend="OnTouchEndHandler">
+            @if (ServicesItems == null)
+            {
+                for (int i = 0; i < Items?.Count; i++)
+                {
+                    <DeliveryCard Item="@Items[i]" />
+                }
+            }
+            @if (Items == null)
+            {
+                for (int i = 0; i < ServicesItems?.Count; i++)
+                {
+                    <ServiceCard Item="@ServicesItems[i]" />
+                }
+            }
+        </div>
+        @if (ServicesItems == null)
+        {
+            <Arrow Class="arrow_right carousel__arrow" Disabled=@((current == Items?.Count - 1) ? true : false) OnClick="RightClickHandler" Label="Следующий слайд" />
+        }
+        @if (Items == null)
+        {
+            <Arrow Class="arrow_right carousel__arrow" Disabled=@((current == ServicesItems?.Count - 1) ? true : false) OnClick="RightClickHandler" Label="Следующий слайд" />
+        }
+
+    </CascadingValue>
+</div>
+
+@code {
+    private int transition = 0;
+    private int current = 0;
+    private double touchStart;
+    private double touchEnd;
+
+    [Parameter]
+    public List<Data.DeliveryCard>? Items { get; set; }
+    [Parameter]
+    public List<Data.ServiceCard>? ServicesItems { get; set; }
+
+    private void LeftClickHandler()
+    {
+        if (ServicesItems == null)
+        {
+            current--;
+            transition += 386;
+        }
+        if (Items == null)
+        {
+            current--;
+            transition += 390;
+        }
+
+    }
+
+    private void RightClickHandler()
+    {
+        if (ServicesItems == null)
+        {
+            current++;
+            transition -= 386;
+            Console.WriteLine("Transition: " + transition);
+        }
+        if (Items == null)
+        {
+            current++;
+            transition -= 390;
+            Console.WriteLine("Transition: " + transition);
+        }
+    }
+
+    private void OnTouchStartHandler(TouchEventArgs t)
+    {
+        touchStart = t.Touches[0].ClientX;
+        Console.WriteLine("Start: " + touchStart);
+    }
+
+    private void OnTouchEndHandler(TouchEventArgs t)
+    {
+        touchEnd = t.ChangedTouches[0].ClientX;
+        Console.WriteLine("End: " + touchStart);
+        if ((touchStart - touchEnd) > 0)
+        {
+            if (ServicesItems == null && transition >= - 386 * (Items?.Count - 2))
+            {
+                RightClickHandler();
+                Console.WriteLine("Transition: " + transition);
+            }
+            if (Items == null && transition >= - 390 * (ServicesItems?.Count - 2))
+            {
+                RightClickHandler();
+                Console.WriteLine("Transition: " + transition);
+            }
+        }
+        else if (transition != 0)
+        {
+            LeftClickHandler(); Console.WriteLine("Transition: " + transition);
+        }
+    }
+}

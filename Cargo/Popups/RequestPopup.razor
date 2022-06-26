@@ -1,0 +1,58 @@
+﻿@inject IJSRuntime js
+
+<div class=@cssClass @onclick="Hide" @ref="modal">
+    <button class="modal__button" @onclick="Hide" aria-label="Закрыть окно" tabindex="0" type="button">&#10006;</button>
+    <RequestForm />
+</div>
+
+@code {
+    private string cssClass = "modal overlay hidden";
+    private bool hidden = true;
+    ElementReference modal;
+
+    [Parameter]
+    public bool Hidden
+    {
+        get => hidden;
+        set
+        {
+            hidden = value;
+        }
+    }
+
+    private void KeyHandler(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape")
+        {
+            Hide();
+        }
+    }
+
+    public void Show()
+    {
+        Hidden = false;
+        cssClass = "modal overlay";
+        ScrollLock();
+        StateHasChanged();
+        modal.MudFocusFirstAsync();
+    }
+
+    private void Hide()
+    {
+        Hidden = true;
+        cssClass = "modal overlay hidden";
+        ScrollUnlock();
+        StateHasChanged();
+    }
+
+    private async void ScrollLock()
+    {
+        await js.InvokeVoidAsync("ScrollLock");
+    }
+
+    private async void ScrollUnlock()
+    {
+        await js.InvokeVoidAsync("ScrollUnlock");
+    }
+
+}

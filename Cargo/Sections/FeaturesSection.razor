@@ -1,0 +1,13 @@
+﻿<Container>
+    <section class="features">
+        <h2 class="features__title">Почему стоит выбрать именно нас?</h2>
+        <Container Class="features__container">
+            @foreach (var feature in AppData.Features)
+            {
+                <Feature Text="@feature.Content" />
+            }
+        </Container>
+    </section>
+</Container>
+
+

@@ -1,0 +1,36 @@
+﻿.feature{
+    max-width: 260px;
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+.feature__icon {
+    display: block;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 1px solid #6C7188;
+    background: transparent;
+    margin: 0 auto;
+    position: relative;
+}
+
+    .feature__icon:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    .feature__icon::after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: #89C249 no-repeat center;
+        top: 10px; 
+        left: 10px;
+    }
+
+.feature__text{
+    user-select: none;
+}

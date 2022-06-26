@@ -1,0 +1,112 @@
+﻿.features {
+    background: #363A4D;
+    border-radius: 20px;
+    padding: 100px 10px;
+}
+
+@media (max-width: 768px) {
+    .features {
+        padding: 50px 20px;
+        margin: 0 -20px;
+    }
+}
+
+    .features ::deep .container {
+        display: flex;
+        max-width: 1140px;
+        column-gap: 30px;
+        row-gap: 50px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .features ::deep .feature .feature__icon:nth-child(1)::after {
+        background-image: url("images/customs.png");
+    }
+
+    .features ::deep .feature .feature__icon:nth-child(2)::after {
+        background-image: url("images/insurance.png");
+    }
+
+    .features ::deep .feature .feature__icon:nth-child(3)::after {
+        background-image: url("/images/check.png");
+    }
+
+    .features ::deep .feature .feature__icon:nth-child(4)::after {
+        background-image: url("/images/delivery-truck.png");
+    }
+
+    .features ::deep .feature .feature__icon:nth-child(5)::after {
+        background-image: url("/images/speech-bubble.png");
+    }
+
+    .features ::deep .feature .feature__icon:nth-child(6)::after {
+        background-image: url("/images/like.png");
+    }
+
+    .features ::deep .feature .feature__icon:nth-child(7)::after {
+        background-image: url("/images/credit-card.png");
+    }
+
+    .features ::deep .feature .feature__icon:nth-child(8)::after {
+        background-image: url("/images/stack.png");
+    }
+
+    .features ::deep .feature {
+        flex: 0 0 260px;
+    }
+
+.features__title {
+    text-transform: uppercase;
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.25rem;
+}
+
+@media (max-width: 768px) {
+    .features__title {
+        font-size: 1.5rem;
+    }
+}
+
+.features__title::after {
+    display: block;
+    content: "";
+    width: 85px;
+    height: 2px;
+    background: #E58D35;
+    margin: 20px auto 50px auto;
+}
+
+@media (max-width: 900px) {
+    .features ::deep .container {
+        justify-content: center;
+    }
+
+    .features ::deep .feature {
+        flex: 0 0 230px;
+    }
+}
+
+@media (max-width: 768px) {
+    .features ::deep .container {
+        scroll-snap-type: x mandatory;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        column-gap: 0;
+        justify-content: start;
+    }
+
+        .features ::deep .container::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #89C249;
+        }
+
+    .features ::deep .feature {
+        scroll-snap-align: start;
+        flex: 1 0 100%;
+        padding-bottom: 50px;
+        max-width: none;
+    }
+}

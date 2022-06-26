@@ -1,0 +1,40 @@
+﻿<button class=@cssClass
+        @onclick="Click"
+        title="burger"
+        type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+@code {
+    private string cssClass = "burger";
+    private bool active = false;
+
+    [Parameter]
+    public EventCallback Click { get; set; }
+
+    [Parameter]
+    public string? Class 
+    { 
+        get => cssClass;
+        set
+        {
+            cssClass = cssClass.AddClass(value);
+        } 
+    }
+
+    [Parameter]
+    public bool Active
+    {
+        get => active;
+        set
+        {
+            if (active != value)
+            {
+                active = value;
+                cssClass = cssClass.ToggleClass("active");
+            }
+        }
+    }
+}

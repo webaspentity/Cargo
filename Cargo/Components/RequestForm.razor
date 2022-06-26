@@ -1,0 +1,63 @@
+﻿<div class="request" @onclick:stopPropagation>
+
+    <h4 class="request__title">Остались вопросы?</h4>
+
+    <p class="request__text">Оставьте заявку и наш менеджер ответит вам в ближайшее время</p>
+
+    <EditForm class="request__form form-request" Model="@request" method="post">
+
+        <DataAnnotationsValidator />
+
+        <fieldset class="form-request__fieldset">
+
+            <div class="form-request__element element">
+                <InputText name="name" class="element__input" @bind-Value="@request.Name" placeholder="Имя *" />
+                <div class="element__error">
+                    <ValidationMessage For="@(() => @request.Name)" />
+                </div>
+            </div>
+
+            <div class="form-request__element element">
+                    <MudTextField Mask="@(new PatternMask("0 (000) 000-00-00"))" @bind-Value="request.Telephone" Class="element__input" Placeholder="Телефон *"/>
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @request.Telephone)" />
+                    </div>
+                </div>
+
+            <div class="form-request__element element">
+                <InputText name="email" class="element__input" @bind-Value="@request.Email" placeholder="Email" />
+                <div class="element__error">
+                    <ValidationMessage For="@(() => @request.Email)" />
+                </div>
+            </div>
+
+            <div class="form-request__element element">
+                <InputTextArea name="question" class="element__input" @bind-Value="@request.Question" placeholder="Ваш вопрос" />
+                <div class="element__error">
+                    <ValidationMessage For="@(() => @request.Question)" />
+                </div>
+            </div>
+
+             <Button Arrow=true Class="form-request__button" Title="Отправить запрос" Type="Data.ButtonType.Submit" />
+
+        </fieldset>
+
+    </EditForm>
+</div>
+
+@code {
+    private string cssClass = "request";
+
+    RequestModel request = new RequestModel();
+
+    [Parameter]
+    public string? Class 
+    { 
+        get => cssClass; 
+        set
+        {
+            cssClass = cssClass.AddClass(value);
+        } 
+    }
+}
+

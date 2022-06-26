@@ -1,0 +1,36 @@
+﻿.delivery ::deep .container{
+    max-width: 1300px;
+    padding: 100px 0;
+}
+
+.delivery__title{
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative;
+    font-size: 2.25rem;
+}
+
+    .delivery__title:not(:last-child){
+        margin-bottom: 50px;
+    }
+
+    .delivery__title::after {
+        display: block;
+        content: "";
+        width: 85px;
+        height: 2px;
+        background: #89C249;
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 42.5px);
+    }
+
+    @media (max-width: 768px){
+        .delivery ::deep .container {
+            padding: 50px 0;
+        }
+        .delivery__title {
+            font-size: 1.5rem;
+        }
+    }

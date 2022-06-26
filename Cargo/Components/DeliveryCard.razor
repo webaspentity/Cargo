@@ -1,0 +1,25 @@
+﻿<div class="delivery-card">
+    <div class="delivery-card__image">
+        <img src="@Item?.Image" alt="delivery" />
+    </div>
+    <div class="delivery-card__content">
+        <h4 class="delivery-card__title">@Item?.Title</h4>
+        <div class="delivery-card__descriptions">
+            <div class="delivery-card__period">@Item?.Period</div>
+            <div class="delivery-card__weight">от @Item?.Weight кг</div>
+        </div>
+        <div class="delivery-card__pricing">от <span class="price">@Item?.Price</span>$/кг </div>
+        <div class="delivery-card__controls">
+            <Button Title="Оставить заявку" Type="Data.ButtonType.Button" />
+            <Button Title="Подробнее" Type="Data.ButtonType.Link" Href="#" Bordered=true/>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Data.DeliveryCard? Item { get; set; }
+    [CascadingParameter]
+    public int Current { get; set; }
+}
+

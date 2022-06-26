@@ -1,0 +1,28 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+
+<Header OnButtonClick="ShowRequestPopup"/>
+
+<div class="page">
+    <main>
+        <article class="content">
+            @Body
+        </article>
+    </main>
+</div>
+
+<Footer />
+
+<RequestPopup @ref="requestPopup" />
+
+
+
+@code{
+    RequestPopup? requestPopup;
+
+    private void ShowRequestPopup()
+    {
+        requestPopup?.Show();
+    }
+} 

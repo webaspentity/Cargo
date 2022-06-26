@@ -1,0 +1,8 @@
+﻿<div class=@((Value <= Current) ? "indicator active" : "indicator")>@Value</div>
+
+@code {
+    [Parameter]
+    public int Value { get; set; }
+    [CascadingParameter]
+    public int Current { get; set; }
+}

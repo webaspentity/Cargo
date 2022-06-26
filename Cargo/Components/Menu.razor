@@ -1,0 +1,35 @@
+﻿@inject IJSRuntime js
+
+<nav class=@cssClass>
+    <ul class="menu__items">
+        @foreach (MenuLink link in AppData.MenuLinks)
+        {
+            <li class="menu__item">
+                <button role="link" aria-label="ссылка"
+                    class="menu__link"
+                    tabindex="0" @onclick="@(()=> ScrollTo(link.Url!))">
+                    @link.Title
+                </button>
+            </li>
+        }
+    </ul>
+</nav>
+
+@code {
+    private string cssClass = "menu";
+
+    [Parameter]
+    public string? Class
+    {
+        get => cssClass;
+        set
+        {
+            cssClass = cssClass.AddClass(value);
+        }
+    }
+
+    private async void ScrollTo(string id)
+    {
+        await js.InvokeVoidAsync("Scroll", $"{id}");
+    }
+}

@@ -1,0 +1,9 @@
+﻿.social {
+    display: flex;
+    column-gap: 8px;
+}
+
+.social__icon{
+    width: 33px;
+    height: 33px;
+}

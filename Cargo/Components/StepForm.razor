@@ -1,0 +1,187 @@
+﻿@if (step <= 2)
+{
+    <EditForm Model="@calculationModel" class="stepform">
+        <Indicators Count="3" Current="step" />
+        <DataAnnotationsValidator />
+
+        <fieldset class="stepform__fieldset">
+            @if (step == 1)
+            {
+                <div class="stepform__element element">
+                    <label class="element__label" for="category">Категория товара:</label>
+                    <InputText name="category" class="element__input" @bind-Value="@calculationModel.CargoCategory" placeholder="Категория товара" />
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.CargoCategory)" />
+                    </div>
+                </div>
+
+                <div class="stepform__element element">
+                    <label class="element__label" for="price">Стоимость груза:</label>
+                    <InputNumber 
+                        name="price" 
+                        class="element__input" 
+                        @bind-Value="@calculationModel.Price" 
+                        placeholder="Введите стоимость" DisplayName="Стоимость груза"/>
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Price)" />
+                    </div>
+                </div>
+
+                <div class="stepform__element element">
+                    <label class="element__label" for="weight">Вес груза (кг):</label>
+                    <InputNumber name="weight" class="element__input" @bind-Value="@calculationModel.Weight" placeholder="Введите вес" />
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Weight)" />
+                    </div>
+                </div>
+
+                <div class="stepform__element element">
+                    <label class="element__label" for="volume">Объем груза (м3):</label>
+                    <InputNumber name="volume" class="element__input" @bind-Value="@calculationModel.Volume" placeholder="Введите объем" />
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Volume)" />
+                    </div>
+                </div>
+
+                <div class="stepform__checkboxes">
+
+                    <div class="stepform__element element element_checkbox">
+                        <label class="element__label">
+                            <InputCheckbox class="element__input" @bind-Value="@calculationModel.Insurance" />
+                            <span class="element__check"></span>
+                            Страховка
+                        </label>
+                    </div>
+
+                    <div class="stepform__element element element_checkbox">
+                        <label class="element__label">
+                            <InputCheckbox class="element__input" @bind-Value="@calculationModel.CustomsClearance" />
+                            <span class="element__check"></span>
+                            Таможенное оформление
+                        </label>
+                    </div>
+
+                </div>
+
+
+                <div class="stepform__element element">
+                    <label class="element__label" for="code">Код ТН ВЭД:</label>
+                    <InputText name="code" class="element__input" @bind-Value="@calculationModel.Code" placeholder="Введите код" />
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Code)" />
+                    </div>
+                </div>
+
+                <div class="stepform__element element element__file @((fileName != null) ? "selected" : "")">
+                    <label class="element__label" for="image">
+                        <InputFile name="image" class="element__input" @bind-Value="@calculationModel.Image" OnChange="LoadFiles"/>
+                        Загрузить фото товара
+                        <span class="element__openfile"></span>
+                    </label>
+                    <div class="file-options">
+                        <span class="filename">@fileName</span>
+                        <button 
+                            class="delete-file" type="button" 
+                            @onclick="()=> fileName = null" aria-label="Удалить изображение">
+                            @((fileName != null) ? "Удалить" : "")
+                        </button>
+                    </div>
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Image)" />
+                    </div>
+                </div>
+
+                <Button Arrow=true Title="Следующий шаг" Type="Data.ButtonType.Button" OnClick="Next" Class="stepform__button"/>
+
+            }
+            @if (step == 2)
+            {
+                <div class="stepform__element element element_name">
+                    <label class="element__label" for="name">Имя:</label>
+                    <InputText name="name" class="element__input" @bind-Value="@calculationModel.Name" placeholder="Ваше имя" />
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Name)" />
+                    </div>
+                </div>
+
+                <div class="stepform__element element element_telephone">
+                     <label class="element__label" for="telephone">Номер телефона:</label>
+                    <MudTextField Mask="@(new PatternMask("0 (000) 000-00-00"))" @bind-Value="calculationModel.Telephone" Class="element__input" Placeholder="+7 (___) ___ - __ - __"/>
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Telephone)" />
+                    </div>
+                </div>
+
+                <div class="stepform__element element">
+                    <label class="element__label" for="email">Email:</label>
+                    <InputText name="email" class="element__input" @bind-Value="@calculationModel.Email" placeholder="Введите e-mail" />
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Email)" />
+                    </div>
+                </div>
+
+                <div class="stepform__element element element_textarea">
+                    <label class="element__label" for="comment">Комментарий:</label>
+                    <InputTextArea name="comment" class="element__input" @bind-Value="@calculationModel.Comment" placeholder="Подробности о товаре, описание, количество" />
+                    <div class="element__error">
+                        <ValidationMessage For="@(() => @calculationModel.Comment)" />
+                    </div>
+                </div>
+
+                <div class="stepform__controls">
+                    <Button Title="Назад" Type="Data.ButtonType.Button" OnClick="Previous"/>
+                    <Button Title="Следующий шаг" Type="Data.ButtonType.Submit" Arrow=true OnClick="Next"/>
+                </div>
+            }
+        </fieldset>
+
+    </EditForm>
+}
+else if (step == 3)
+{
+    <div class="stepform-success">
+        <div class="stepform-success__image"><img src="images/form_success.png" alt="Form success" /></div>
+        <h2 class="stepform__subtitle">Спасибо за заявку!</h2>
+        <p class="stepform__text">Мы обязательно свяжемся с вами.</p>
+        <p class="stepform__additional">
+            <h3>Так же для вас может быть полезно:</h3>
+            <ul class="stepform__list">
+                <li>Услуги</li>
+                <li>Примеры грузоперевозок</li>
+                <li>Поиск товаров в Китае</li>
+            </ul>
+        </p>
+    </div>
+}
+
+
+@code {
+    private int step = 1;
+    private string? fileName;
+    private CalculationModel calculationModel = new CalculationModel();
+
+    private void LoadFiles(InputFileChangeEventArgs e)
+    {
+        fileName = e.File.Name;
+    }
+
+    private void Next()
+    {
+        step++;
+    }
+
+    private void Previous()
+    {
+        step--;
+    }
+
+    private void OnInvalidSubmit()
+    {
+
+    }
+
+    private void OnSubmit()
+    {
+
+    }
+}

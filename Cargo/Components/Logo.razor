@@ -1,0 +1,17 @@
+﻿<a class=@cssClass href="/">
+    <img src="@AppData.LogoPath" alt="Логотип"/>
+</a>
+
+@code{
+    private string cssClass = "logo";
+
+    [Parameter]
+    public string? Class 
+    { 
+        get => cssClass;
+        set
+        {
+            cssClass = cssClass.AddClass(value);
+        } 
+    }
+}

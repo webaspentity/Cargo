@@ -1,0 +1,39 @@
+﻿<div class=@cssClass>
+    <CascadingValue Value="@this.current" Name="Current">
+        @for (int i = 0; i < AppData.AccordionContent.Count; i++)
+        {
+            <Spoiler Item="AppData.AccordionContent[i]" Order="@i" OnClick="SetCurrent"/>
+        }
+    </CascadingValue>
+</div>
+
+
+@code {
+    private int current = 0;
+    private string cssClass = "accordion";
+
+    [Parameter]
+    public int Current
+    {
+        get => current;
+        set
+        {
+            current = value;
+        }
+    }
+
+    [Parameter]
+    public string? Class 
+    { 
+        get => cssClass; 
+        set
+        {
+            cssClass = cssClass.AddClass(value);
+        } 
+    }
+
+    private void SetCurrent (int order)
+    {
+        current = order;
+    }
+}

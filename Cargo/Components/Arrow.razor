@@ -1,0 +1,20 @@
+﻿<button class=@cssClass type="button" disabled=@Disabled @onclick=OnClick aria-label="@Label"></button>
+
+@code{
+    private string cssClass = "arrow";
+    [Parameter]
+    public string Class 
+    { 
+        get => cssClass; 
+        set
+        {
+            cssClass = cssClass.AddClass(value);
+        } 
+    }
+    [Parameter]
+    public bool Disabled { get; set; }
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+    [Parameter]
+    public string? Label { get; set; }
+}

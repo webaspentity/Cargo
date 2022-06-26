@@ -1,0 +1,285 @@
+﻿.stepform {
+    position: relative;
+}
+
+.stepform__fieldset {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+    background: #363A4D;
+    border-radius: 20px;
+    padding: 50px;
+    font-size: 1rem;
+}
+
+@media(max-width: 580px) {
+    .stepform__fieldset {
+        grid-template-columns: 1fr;
+    }
+
+        .stepform__fieldset .element {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+}
+
+.stepform__checkboxes {
+    align-self: center;
+}
+
+.element {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    position: relative;
+}
+
+    .element label {
+        font-size: 0.9375rem;
+    }
+
+    .element ::deep input {
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+        .element ::deep input:focus {
+            outline: 4px solid #6A6D7B;
+        }
+
+            .element ::deep input:focus::placeholder{
+                transform: translate3d(-100%, 0, 0);
+            }
+
+            .element ::deep input[type=number]::-webkit-outer-spin-button,
+            .element ::deep input[type=number]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+
+.element__fileopen:hover {
+    cursor: pointer;
+}
+
+.element_name {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.element__file {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+    .element__file ::deep input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+.element__openfile {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    transition: .4s ease;
+}
+
+.element__file ::deep input:hover {
+    cursor: pointer;
+}
+
+.element__file ::deep input:focus {
+    outline: 2px solid coral;
+}
+.element__file.selected ::deep input + .element__openfile{
+    background: seagreen;
+}
+
+.element__file ::deep input:focus + .element__openfile {
+    background: coral;
+}
+
+.element__file label {
+    border: 2px dashed #6A6D7B;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.875rem;
+    position: relative;
+}
+
+.element__error {
+    color: lightcoral;
+}
+
+.element_checkbox ::deep input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    padding: 0;
+}
+
+    .element_checkbox ::deep input:focus {
+        outline: none;
+    }
+
+.element .element__check {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1.6em;
+    height: 1.6em;
+    background: white;
+    border-radius: 4px;
+    margin-left: calc(-1.6em - 10px);
+}
+
+.element_checkbox label {
+    padding-left: calc(1.6em + 10px);
+    user-select: none;
+}
+
+    .element_checkbox label:hover {
+        cursor: pointer;
+    }
+
+.element_checkbox ::deep input:checked + .element__check {
+    background: white url("images/input_checked.svg") no-repeat center;
+}
+
+.element_checkbox ::deep input:focus + .element__check {
+    outline: 4px solid #6A6D7B;
+}
+
+.element_checkbox:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.stepform__fieldset ::deep .stepform__button {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.stepform__controls{
+    display: flex;
+    column-gap: 30px;
+    row-gap: 20px;
+    justify-content: space-between;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+@media (max-width: 550px){
+    .stepform__controls{
+        flex-direction: column;
+    }
+}
+
+.element_textarea {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    min-height: 150px;
+}
+
+.element_textarea ::deep textarea {
+    min-height: 150px;
+    border-radius: 10px;
+    padding: 20px;
+}
+    .element_textarea ::deep textarea:focus {
+        outline: 4px solid #6A6D7B;
+    }
+
+        .element_textarea ::deep textarea:focus::placeholder{
+            transform: translate3d(-100%, 0, 0);
+        }
+
+
+        .stepform-success {
+            font-size: 1.125rem;
+            max-width: 370px;
+            margin: 0 auto;
+        }
+
+.stepform-success__image{
+    text-align: center;
+}
+
+    .stepform-success__image:not(:last-child) {
+        margin-bottom: 35px;
+    }
+
+.stepform__subtitle{
+    font-size: 2rem;
+}
+
+.stepform__subtitle:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.stepform__additional h3{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stepform__additional:not(:first-child){
+    margin-top: 40px;
+}
+
+.stepform__list{
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+}
+
+.stepform__list li{
+    padding: 5px 0;
+}
+
+.file-options{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.delete-file{
+    color: lightcoral;
+}
+
+.stepform__element ::deep .mud-input-control-input-container, #mask {
+    background: white;
+}
+
+.stepform__element ::deep .mud-input-control.element__input{
+    margin: 0;
+}
+    .stepform__element ::deep .mud-input input{
+        font-size: inherit;
+        color: inherit;
+    }
+
+
+    .stepform__element ::deep .mud-input-text {
+        margin: 0 !important;
+    }
+
+.stepform__element ::deep .mud-input-control-input-container {
+    border-radius: 10px;
+    font-size: 8px !important;
+}
+
+.stepform__element ::deep .mud-input.mud-input-underline::before, .stepform__element ::deep .mud-input.mud-input-underline::after {
+    display: none;
+}

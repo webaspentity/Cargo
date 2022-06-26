@@ -1,0 +1,26 @@
+﻿<MudCarousel AutoCycle=true
+             BulletsColor="MudBlazor.Color.Default"
+             BulletsClass="bullet"
+             TData="CarouselContent"
+             ShowBullets=true
+             ShowArrows=true 
+             ArrowsPosition="Position.Center"
+             Class="top-carousel" >
+    <NextButtonTemplate>
+        <Arrow Class="arrow_right" Label="Следующий слайд"/>
+    </NextButtonTemplate>
+
+    <PreviousButtonTemplate>
+        <Arrow Class="arrow_left" Label="Предыдущий слайд"/>
+    </PreviousButtonTemplate>
+
+    <ChildContent>
+        @foreach (CarouselContent content in AppData.CarouselContents)
+        {
+            <MudCarouselItem>
+                <TopCarouselSlide Item="content" />
+            </MudCarouselItem>
+        }
+    </ChildContent>
+
+</MudCarousel>

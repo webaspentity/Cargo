@@ -1,0 +1,13 @@
+﻿<div class="top-carousel__slide">
+    <img src="@Item.ImagePath" alt="@Item.ImageAlt"/>
+    <div class="top-carousel__content">
+        <div class="top-carousel__title">@Item.Title</div>
+        <div class="top-carousel__text">@Item.Text</div>
+        <Button Title="@Item.ButtonText" Class="top-carousel__button" Type="Data.ButtonType.Button" Arrow=true/>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Data.CarouselContent Item { get; set; } = default!;
+}

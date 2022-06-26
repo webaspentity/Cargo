@@ -1,0 +1,20 @@
+﻿.indicator {
+    width: 60px;
+    height: 60px;
+    background: #282B38;
+    color: #BFBFBF;
+    border: 2px solid #363A4D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+    .indicator.active {
+        color: #fff;
+        border: 0;
+        background: #89C249;
+    }

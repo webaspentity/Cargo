@@ -1,0 +1,45 @@
+﻿.carousel{
+    position: relative;
+    padding: 0 46px;
+    overflow: hidden;
+    max-width: 1220px;
+}
+
+.carousel__items{
+    display: flex;
+    column-gap: 30px;
+    transition: .7s ease;
+}
+
+.carousel ::deep .arrow {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background: #282B38;
+}
+
+.carousel ::deep .arrow_left {
+    left: 0;
+}
+
+.carousel ::deep .arrow_right {
+    right: 0;
+}
+
+@media (max-width: 500px) {
+    .carousel {
+        padding: 0;
+        margin: 0 -10px;
+    }
+
+    .carousel ::deep .arrow {
+        height: 50%;
+        background: transparent;
+    }
+
+    .carousel__items {
+        column-gap: 86px;
+    }
+}

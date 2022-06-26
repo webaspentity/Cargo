@@ -1,0 +1,21 @@
+﻿.logo {
+    display: inline-block;
+    width: 172px;
+    height: 50px;
+}
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .logo:focus {
+        outline: none;
+    }
+
+@media (max-width: 768px){
+    .logo{
+        transform: scale3d(0.75,0.7,0.7);
+    }
+}

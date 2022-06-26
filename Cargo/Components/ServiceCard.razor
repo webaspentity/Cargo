@@ -1,0 +1,15 @@
+﻿<div class="service-card">
+    <img src="@Item?.Image" alt="background"/>
+    <div class="service-card__content">
+        <h4 class="service-card__title">
+            @Item?.Title
+        </h4>
+        <p class="service-card__text">@Item?.Description</p>
+        <Button Title="Подробнее" Arrow=false Type="Data.ButtonType.Link" Href="#" Class="service-card__button" Bordered=true />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Data.ServiceCard? Item { get; set; }
+}

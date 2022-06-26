@@ -1,0 +1,23 @@
+﻿<section class="registration" id="registration">
+    <Container Class="registration__container">
+        <div class="registration__header">
+            <h2 class="registration__title">Готовы к сотрудничеству?</h2>
+            <h4 class="registration__subtitle">Зарегистрируйте груз!</h4>
+        </div>
+        <article class="registration__content">
+            @foreach (RegistrationBlockModel block in AppData.RegistrationBlocks)
+            {
+                <div class="registration__block">
+                    <div class="registration__image"><img src="@block.Image" alt="@block.ImageAlt"/></div>
+                    <ul class="registration__text">
+                        @foreach (string text in block.ParagraphsList!)
+                        {
+                            <li>@text</li>
+                        }
+                    </ul>
+                </div>
+            }
+        </article>
+    </Container>
+
+</section>

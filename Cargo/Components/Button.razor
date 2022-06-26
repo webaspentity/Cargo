@@ -1,0 +1,51 @@
+﻿<button type=@type
+        class=@cssClass
+        role=@((Type == Data.ButtonType.Link) ? "link" : null) @onclick="OnClick">
+    @Title
+</button>
+
+
+@code {
+    private string? cssClass;
+    private string? type;
+
+    [Parameter]
+    public Cargo.Data.ButtonType Type { get; set; }
+
+    [Parameter]
+    public bool Bordered { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public string? Href { get; set; }
+
+    [Parameter]
+    public string? Class
+    {
+        get => cssClass;
+        set
+        {
+            cssClass = cssClass?.AddClass(value);
+        }
+    }
+
+    [Parameter]
+    public bool Arrow { get; set; } = false;
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+    protected override void OnInitialized()
+    {
+        cssClass = (Arrow) ? "button button_with-arrow" : "button";
+        if (Bordered) cssClass = cssClass?.AddClass("button_bordered");
+
+        if (Type == Data.ButtonType.Button) { 
+            type = "button"; 
+        } else if (Type == Data.ButtonType.Submit) type = "submit";
+
+        base.OnInitialized();
+    }
+}

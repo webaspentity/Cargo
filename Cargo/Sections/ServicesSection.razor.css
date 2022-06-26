@@ -1,0 +1,84 @@
+﻿.services ::deep .container {
+    max-width: 1820px;
+    padding: 100px 0;
+    background: #363A4D;
+    border-radius: 20px;
+}
+
+
+
+.services__title {
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative;
+    font-size: 2.25rem;
+}
+
+    .services__title:not(:last-child) {
+        margin-bottom: 50px;
+    }
+
+    .services__title::after {
+        display: block;
+        content: "";
+        width: 85px;
+        height: 2px;
+        background: #E58D35;
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 42.5px);
+    }
+
+.services ::deep .carousel {
+    margin: 0 auto;
+    min-width:67.7%;
+}
+
+    .services ::deep .carousel .carousel__items{
+        min-width: 1140px;
+    }
+
+    .services ::deep .carousel .arrow {
+        background: #363A4D;
+    }
+
+        .services ::deep .carousel .arrow[disabled]{
+            visibility: unset;
+        }
+
+            .services ::deep .carousel .arrow[disabled]::after{
+                visibility: hidden;
+            }
+
+            .services ::deep .carousel .service-card {
+            }
+
+            @media(max-width: 500px){
+                .services ::deep .carousel .arrow {
+                    background: transparent;
+                }
+
+                .services ::deep .carousel .carousel__items{
+                    column-gap: 94px;
+                    padding: 0 10px;
+                }
+
+                .services{
+                    margin: 0 -20px;
+                }
+
+                .services ::deep .container{
+                    padding: 50px 0;
+                }
+            }
+
+@media (max-width: 768px) {
+    .services ::deep .container {
+        padding: 50px 0;
+    }
+
+    .services__title {
+        font-size: 1.5rem;
+    }
+}

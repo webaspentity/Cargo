@@ -1,0 +1,144 @@
+﻿@import url("fonts.css");
+@import url("breakpoints.css");
+
+:root {
+    --green: #89c249;
+    --grey: #363a4d;
+    --orange: #e58d35;
+    --bg-color: #282b38;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-color);
+    overflow-x: hidden;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+    body::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background: lightgrey;
+    }
+
+        body::-webkit-scrollbar-thumb:hover{
+            background: white;
+        }
+
+        .wrapper {
+            padding: 0 20px;
+        }
+/* Страница не найдена */
+.not-found {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    height: 100vh;
+}
+
+/* Загрузка */
+
+.loading {
+    font-size: 2rem;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+}
+
+    .spinner > div {
+        background-color: #89c249;
+        height: 100%;
+        width: 6px;
+        display: inline-block;
+        -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+        animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    .spinner .rect2 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .spinner .rect3 {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+    }
+
+    .spinner .rect4 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .spinner .rect5 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+@-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4);
+    }
+
+    20% {
+        -webkit-transform: scaleY(1);
+    }
+}
+
+@keyframes sk-stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }
+
+    20% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+    }
+}
+
+/**/
+.bullet{
+    transform: scale(0.5);
+}
+
+.top-carousel {
+    min-height: 700px;
+    border-radius: 20px;
+    margin: 0 -200px;
+}
+
+@media (max-width: 768px) {
+    .mud-carousel.mud-carousel-default.top-carousel {
+        min-height: 650px;
+        margin: 0 -20px !important;
+    }  
+}
+
+@media (max-width: 500px) {
+    .mud-carousel.mud-carousel-default.top-carousel .top-carousel__text {
+        max-width: 200px;
+        align-self: center;
+    }
+}
+
+.mask{
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+    .mask::after, .mask::before{
+        display: none;
+    }

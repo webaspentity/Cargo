@@ -1,0 +1,70 @@
+﻿@inject IJSRuntime js
+
+<header class="header">
+    <Container Class="header__container">
+        <Logo Class="header__logo"/>
+        <div class=@menuGroupClass @onkeydown="KeyHandler" tabindex="-1" @ref="menu" @onclick="CloseMenu">
+            <Menu Class="header__menu"/>
+            <Button 
+                Type="Data.ButtonType.Button" 
+                Title="Оставить заявку" 
+                Class="header__button" 
+                OnClick="() => OnButtonClick.InvokeAsync()"/>
+        </div>
+        <Burger Click="ToggleMenu" Active="@burgerActive" Class="header__burger" />
+    </Container>
+</header>
+
+@code {
+    private string menuGroupClass = "header__menu-group";
+    private bool burgerActive = false;
+    ElementReference menu;
+
+    [Parameter]
+    public EventCallback OnButtonClick { get; set; }
+
+    private void ToggleMenu()
+    {
+        if (!menuGroupClass.Contains("open"))
+        {
+            burgerActive = true;
+            menuGroupClass = menuGroupClass.ToggleClass("open");
+            ScrollLock();
+            menu.FocusAsync();
+        }
+        else
+        {
+            burgerActive = false;
+            menuGroupClass = menuGroupClass.ToggleClass("open");
+            ScrollUnlock();
+        }
+    }
+
+    private void CloseMenu()
+    {
+        if (burgerActive)
+        {
+            burgerActive = false;
+            menuGroupClass = menuGroupClass.ToggleClass("open");
+            ScrollUnlock();
+        }
+    }
+
+    private void KeyHandler(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape" && burgerActive)
+        {
+            ToggleMenu();
+        }
+    }
+
+    private async void ScrollLock()
+    {
+        await js.InvokeVoidAsync("ScrollLock");
+    }
+
+    private async void ScrollUnlock()
+    {
+        await js.InvokeVoidAsync("ScrollUnlock");
+    }
+}

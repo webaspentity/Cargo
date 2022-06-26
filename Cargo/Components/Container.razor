@@ -1,0 +1,20 @@
+﻿<div class=@cssClass>
+    @ChildContent
+</div>
+
+@code {
+    private string cssClass = "container";
+
+    [Parameter]
+    public string Class
+    {
+        get => cssClass;
+        set
+        {
+            cssClass = cssClass.AddClass(value);
+        }
+    }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}
