@@ -1,6 +1,5 @@
-﻿<footer class="footer" id="footer">
+﻿<footer class="footer" id="footer" @onclick:stopPropagation>
     <Container Class="footer__container">
-
         <div class="footer__block">
             <Logo />
             <div class="footer__text">
@@ -14,41 +13,37 @@
             </div>
             <SocialBlock />
         </div>
-
         <div class="footer__block footer__block_links">
             <h4 class="footer__title">Грузоперевозки</h4>
             <div class="footer__links">
-                <a href="#">Цены и сроки</a>
-                <a href="#">Услуги</a>
-                <a href="#">О компании</a>
-                <a href="#">Контакты</a>
-                <a href="#">Оформить груз</a>
+                <a href="#" @onclick:preventDefault>Цены и сроки</a>
+                <a href="#" @onclick:preventDefault>Услуги</a>
+                <a href="#" @onclick:preventDefault>О компании</a>
+                <a href="#" @onclick:preventDefault>Контакты</a>
+                <a href="#" @onclick:preventDefault>Оформить груз</a>
             </div>
         </div>
-
         <div class="footer__block footer__block_links">
             <h4 class="footer__title">Услуги</h4>
             <div class="footer__links">
-                <a href="#">Выкуп товара</a>
-                <a href="#">Страховка груза</a>
-                <a href="#">Аренда склада</a>
-                <a href="#">Перевод денежных средств</a>
+                <a href="#" @onclick:preventDefault>Выкуп товара</a>
+                <a href="#" @onclick:preventDefault>Страховка груза</a>
+                <a href="#" @onclick:preventDefault>Аренда склада</a>
+                <a href="#" @onclick:preventDefault>Перевод денежных средств</a>
             </div>
         </div>
-
         <div class="footer__block footer__block_links">
             <h4 class="footer__title">Информация</h4>
             <div class="footer__links">
-                <a href="#">Отзывы</a>
-                <a href="#">Требования к грузу</a>
-                <a href="#">Договор-оферта</a>
-                <a href="#">Как заключить договор</a>
-                <a href="#">Способы оплаты услуг</a>
-                <a href="#">Документы</a>
-                <a href="#">Статьи</a>
+                <a href="#" @onclick:preventDefault>Отзывы</a>
+                <a href="#" @onclick:preventDefault>Требования к грузу</a>
+                <a href="#" @onclick:preventDefault>Договор-оферта</a>
+                <a href="#" @onclick:preventDefault>Как заключить договор</a>
+                <a href="#" @onclick:preventDefault>Способы оплаты услуг</a>
+                <a href="#" @onclick:preventDefault>Документы</a>
+                <a href="#" @onclick:preventDefault>Статьи</a>
             </div>
         </div>
-
     </Container>
 </footer>
 

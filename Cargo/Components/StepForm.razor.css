@@ -44,6 +44,14 @@
         padding: 20px;
     }
 
+        .element ::deep input::placeholder{
+            color: lightgrey;
+        }
+
+        .element ::deep textarea::placeholder {
+            color: lightgrey;
+        }
+
         .element ::deep input:focus {
             outline: 4px solid #6A6D7B;
         }
@@ -168,7 +176,7 @@
 
 .stepform__fieldset ::deep .stepform__button {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 2;
 }
 
 .stepform__controls{

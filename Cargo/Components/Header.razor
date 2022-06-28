@@ -3,22 +3,21 @@
 <header class="header">
     <Container Class="header__container">
         <Logo Class="header__logo"/>
-        <div class=@menuGroupClass @onkeydown="KeyHandler" tabindex="-1" @ref="menu" @onclick="CloseMenu">
+        <div class=@menuGroupClass @onkeydown="KeyHandler" @onclick="CloseMenu">
             <Menu Class="header__menu"/>
             <Button 
                 Type="Data.ButtonType.Button" 
                 Title="Оставить заявку" 
                 Class="header__button" 
-                OnClick="() => OnButtonClick.InvokeAsync()"/>
+                OnClick="OnButtonClick"/>
         </div>
-        <Burger Click="ToggleMenu" Active="@burgerActive" Class="header__burger" />
+        <Burger Click="ToggleMenu" Active="@burgerActive" Class="header__burger" OnKeyDown="KeyHandler"/>
     </Container>
 </header>
 
 @code {
     private string menuGroupClass = "header__menu-group";
     private bool burgerActive = false;
-    ElementReference menu;
 
     [Parameter]
     public EventCallback OnButtonClick { get; set; }
@@ -30,7 +29,6 @@
             burgerActive = true;
             menuGroupClass = menuGroupClass.ToggleClass("open");
             ScrollLock();
-            menu.FocusAsync();
         }
         else
         {
@@ -40,7 +38,7 @@
         }
     }
 
-    private void CloseMenu()
+    public void CloseMenu()
     {
         if (burgerActive)
         {

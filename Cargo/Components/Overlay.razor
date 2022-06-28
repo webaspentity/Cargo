@@ -1,0 +1,56 @@
+﻿@inject IJSRuntime js
+
+<div class=@cssClass @onclick="()=> Hidden = true" role="dialog" tabindex="-1" @onkeydown="OnKeyDown" @ref="modal">
+    <button class="modal__button" @onclick="()=> Hidden = true" aria-label="Закрыть окно" tabindex="0" type="button">&#10006;</button>
+    @ChildContent
+</div>
+
+@code {
+    private string? cssClass;
+    private bool hidden;
+    private ElementReference modal;
+
+    [Parameter]
+    public bool Hidden
+    {
+        get => hidden;
+        set
+        {
+            hidden = value;
+            if (hidden) { cssClass = "modal overlay hidden"; ScrollUnlock(); }
+            else { cssClass = "modal overlay"; ScrollLock(); }
+        }
+    }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private async void ScrollLock()
+    {
+        await js.InvokeVoidAsync("ScrollLock");
+    }
+
+    private async void ScrollUnlock()
+    {
+        await js.InvokeVoidAsync("ScrollUnlock");
+    }
+
+    private void OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape" && !Hidden)
+        {
+            Hidden = true;
+        }
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (!firstRender)
+        {
+            modal.FocusAsync();
+        }
+        base.OnAfterRender(firstRender);
+    }
+
+    public void Show() => Hidden = false;
+}

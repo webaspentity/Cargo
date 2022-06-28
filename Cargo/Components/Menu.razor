@@ -5,9 +5,8 @@
         @foreach (MenuLink link in AppData.MenuLinks)
         {
             <li class="menu__item">
-                <button role="link" aria-label="ссылка"
-                    class="menu__link"
-                    tabindex="0" @onclick="@(()=> ScrollTo(link.Url!))">
+                <button role="link" aria-label="ссылка" class="menu__link" tabindex="0" 
+                @onclick="@(()=> ScrollTo(link.Url!))">
                     @link.Title
                 </button>
             </li>
@@ -30,6 +29,7 @@
 
     private async void ScrollTo(string id)
     {
+        await js.InvokeVoidAsync("ScrollUnlock");
         await js.InvokeVoidAsync("Scroll", $"{id}");
     }
 }

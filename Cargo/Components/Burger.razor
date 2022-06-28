@@ -1,7 +1,7 @@
 ﻿<button class=@cssClass
         @onclick="Click"
         title="burger"
-        type="button">
+        type="button" @onkeydown="OnKeyDown">
     <span></span>
     <span></span>
     <span></span>
@@ -13,6 +13,8 @@
 
     [Parameter]
     public EventCallback Click { get; set; }
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnKeyDown { get; set; }
 
     [Parameter]
     public string? Class 

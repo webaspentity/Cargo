@@ -2,27 +2,32 @@
 
 <MudThemeProvider />
 
-<Header OnButtonClick="ShowRequestPopup"/>
+<Header OnButtonClick="ShowRequest" @ref="header" />
 
 <div class="page">
-    <main>
-        <article class="content">
-            @Body
-        </article>
-    </main>
+        <main>
+            <article class="content">
+                @Body
+            </article>
+        </main>
 </div>
 
 <Footer />
 
-<RequestPopup @ref="requestPopup" />
+<Overlay Hidden=@hideRequest>
+    <RequestForm OnValidSubmit="()=> hideRequest = true" />
+</Overlay>
 
+@code {
+    public bool hideRequest = true;
+    private Header? header;
 
-
-@code{
-    RequestPopup? requestPopup;
-
-    private void ShowRequestPopup()
+    public void ShowRequest()
     {
-        requestPopup?.Show();
+        if (hideRequest)
+        {
+            header.CloseMenu();
+            hideRequest = false;
+        }
     }
-} 
+}

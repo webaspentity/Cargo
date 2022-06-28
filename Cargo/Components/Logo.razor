@@ -1,4 +1,6 @@
-﻿<a class=@cssClass href="/">
+﻿@inject IJSRuntime js
+
+<a class=@cssClass href="/" @onclick:preventDefault @onclick="Scroll">
     <img src="@AppData.LogoPath" alt="Логотип"/>
 </a>
 
@@ -11,7 +13,12 @@
         get => cssClass;
         set
         {
-            cssClass = cssClass.AddClass(value);
+            cssClass = cssClass.AddClass(value); 
         } 
+    }
+
+    private async void Scroll()
+    {
+        await js.InvokeVoidAsync("Scroll", "top-carousel");
     }
 }

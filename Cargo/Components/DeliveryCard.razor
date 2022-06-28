@@ -11,7 +11,7 @@
         <div class="delivery-card__pricing">от <span class="price">@Item?.Price</span>$/кг </div>
         <div class="delivery-card__controls">
             <Button Title="Оставить заявку" Type="Data.ButtonType.Button" />
-            <Button Title="Подробнее" Type="Data.ButtonType.Link" Href="#" Bordered=true/>
+            <Button Title="Подробнее" Type="Data.ButtonType.Link" Href="" Bordered=true/>
         </div>
     </div>
 </div>
@@ -19,7 +19,5 @@
 @code {
     [Parameter]
     public Data.DeliveryCard? Item { get; set; }
-    [CascadingParameter]
-    public int Current { get; set; }
 }
 

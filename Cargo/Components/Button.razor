@@ -1,6 +1,6 @@
 ﻿<button type=@type
         class=@cssClass
-        role=@((Type == Data.ButtonType.Link) ? "link" : null) @onclick="OnClick">
+        role=@((Type == Data.ButtonType.Link) ? "link" : null) @onclick="OnClick" @onclick:stopPropagation>
     @Title
 </button>
 

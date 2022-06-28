@@ -8,7 +8,7 @@
 .carousel__items{
     display: flex;
     column-gap: 30px;
-    transition: .7s ease;
+    transition: .5s ease;
 }
 
 .carousel ::deep .arrow {

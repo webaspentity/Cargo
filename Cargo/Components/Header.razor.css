@@ -69,10 +69,6 @@
         font-size: 1.5rem;
     }
 
-        .header__menu-group:focus {
-            outline: none;
-        }
-
         .header__menu-group::-webkit-scrollbar-thumb {
             border-radius: 8px;
             background: #E58D35;

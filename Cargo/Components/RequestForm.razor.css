@@ -72,22 +72,28 @@
         transform: translate3d(-100%, 0, 0);
     }
 
+    .form-request__element ::deep .element__input::placeholder {
+        color: #D1D1D1;
+    }
 
-
-.form-request__element ::deep .mud-input-control-input-container {
-    background: white;
-    border-radius: 10px;
-}
+        .form-request__element ::deep .mud-input-control-input-container {
+            background: white;
+            border-radius: 10px;
+        }
 
 .form-request__element ::deep .mud-input-slot {
     padding: 20px;
     font-size: 0.9rem;
     border-radius: 10px;
-    color: #2e2e2e;
 }
+
     .form-request__element ::deep .mud-input-slot:focus {
         outline: 5px solid #505364;
     }
+
+        .form-request__element ::deep .mud-input-slot:focus::placeholder {
+            transform: translate3d(-100%, 0, 0);
+        }
 
     .form-request__element ::deep .mud-input-control.mud-input-input-control.element__input {
         margin: 0;
