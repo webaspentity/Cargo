@@ -10,7 +10,7 @@
         </div>
         <div class="delivery-card__pricing">от <span class="price">@Item?.Price</span>$/кг </div>
         <div class="delivery-card__controls">
-            <Button Title="Оставить заявку" Type="Data.ButtonType.Button" />
+            <Button Title="Оставить заявку" Type="Data.ButtonType.Button" OnClick="ButtonRequestClick"/>
             <Button Title="Подробнее" Type="Data.ButtonType.Link" Href="" Bordered=true/>
         </div>
     </div>
@@ -19,5 +19,7 @@
 @code {
     [Parameter]
     public Data.DeliveryCard? Item { get; set; }
+    [Parameter]
+    public EventCallback ButtonRequestClick { get; set; }
 }
 

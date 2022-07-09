@@ -5,11 +5,7 @@
         <Logo Class="header__logo"/>
         <div class=@menuGroupClass @onkeydown="KeyHandler" @onclick="CloseMenu">
             <Menu Class="header__menu"/>
-            <Button 
-                Type="Data.ButtonType.Button" 
-                Title="Оставить заявку" 
-                Class="header__button" 
-                OnClick="OnButtonClick"/>
+                @ChildContent
         </div>
         <Burger Click="ToggleMenu" Active="@burgerActive" Class="header__burger" OnKeyDown="KeyHandler"/>
     </Container>
@@ -20,7 +16,7 @@
     private bool burgerActive = false;
 
     [Parameter]
-    public EventCallback OnButtonClick { get; set; }
+    public RenderFragment? ChildContent { get; set; } 
 
     private void ToggleMenu()
     {

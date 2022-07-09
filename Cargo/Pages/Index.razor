@@ -3,7 +3,7 @@
 
 <PageTitle>Cargo</PageTitle>
 
-<TopCarouselSection />
+<TopCarouselSection SlideClick="()=> formHidden = false"/>
 
 <CostCalculationSection />
 
@@ -19,4 +19,10 @@
 
 <RegistrationSection />
 
+<Overlay Hidden=@formHidden>
+    <CalculationForm />
+</Overlay>
 
+@code{
+    private bool formHidden = true;
+}

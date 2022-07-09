@@ -16,7 +16,7 @@
         {
             for (int i = 0; i < Items?.Count; i++)
             {
-                <DeliveryCard Item="@Items[i]" />
+                <DeliveryCard Item="@Items[i]" ButtonRequestClick="ButtonRequestHandler" />
             }
         }
         @if (Items == null)
@@ -34,7 +34,7 @@
             Class="arrow_right carousel__arrow" 
             Disabled=@((current == Items?.Count - 1) ? true : false) 
             OnClick="RightClickHandler" 
-            Label="Следующий слайд" />
+            Label="Следующий слайд"/>
     }
     @if (Items == null)
     {
@@ -52,11 +52,14 @@
     private int current = 0;
     private double touchStart;
     private double touchEnd;
+    private bool hidden = true;
 
     [Parameter]
     public List<Data.DeliveryCard>? Items { get; set; }
     [Parameter]
     public List<Data.ServiceCard>? ServicesItems { get; set; }
+    [CascadingParameter]
+    public Cargo.Components.Button RequestButton { get; set; }
 
     private void LeftClickHandler()
     {
@@ -110,5 +113,10 @@
         {
             LeftClickHandler();
         }
+    }
+
+    private void ButtonRequestHandler()
+    {
+        RequestButton.OnClick.InvokeAsync();
     }
 }

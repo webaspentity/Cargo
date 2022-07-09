@@ -18,9 +18,14 @@
         @foreach (CarouselContent content in AppData.CarouselContents)
         {
             <MudCarouselItem>
-                <TopCarouselSlide Item="content" />
+                <TopCarouselSlide Item="content" SlideClick="SlideClick"/>
             </MudCarouselItem>
         }
     </ChildContent>
 
 </MudCarousel>
+
+@code{
+    [Parameter]
+    public EventCallback SlideClick { get; set; }
+}

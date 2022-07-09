@@ -2,14 +2,23 @@
 
 <MudThemeProvider />
 
-<Header OnButtonClick="ShowRequest" @ref="header" />
+<Header @ref="header">
+    <Button 
+        OnClick="ShowRequest" 
+        Title="Оставить заявку" 
+        @ref="requestButton" 
+        Type="Data.ButtonType.Button"
+        Class="header__button"/>
+</Header>
 
 <div class="page">
-        <main>
+    <main>
+        <CascadingValue Value="requestButton">
             <article class="content">
                 @Body
             </article>
-        </main>
+        </CascadingValue>
+    </main>
 </div>
 
 <Footer />
@@ -21,6 +30,7 @@
 @code {
     public bool hideRequest = true;
     private Header? header;
+    private Cargo.Components.Button? requestButton;
 
     public void ShowRequest()
     {

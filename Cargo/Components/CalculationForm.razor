@@ -1,0 +1,62 @@
+﻿<div class="calculation" @onclick:stopPropagation @onkeydown:stopPropagation>
+
+    <h4 class="calculation__title">Рассчитать объем</h4>
+
+    <EditForm class="calculation__form form-calculation" Model="@volume" method="post" OnValidSubmit="OnValidSubmit">
+
+        <DataAnnotationsValidator />
+
+        <fieldset class="form-calculation__fieldset">
+
+            <div class="calculation__element element">
+                <label class="calculation__label" for="length">Длина:</label>
+                <InputNumber name="length"
+                             class="element__input"
+                             @bind-Value="@volume.Length" DisplayName="Длина" />
+                <div class="element__error">
+                    <ValidationMessage For="@(() => @volume.Length)" />
+                </div>
+            </div>
+
+            <div class="calculation__element element">
+                <label class="calculation__label" for="width">Ширина:</label>
+                <InputNumber name="width"
+                             class="element__input"
+                             @bind-Value="@volume.Width" DisplayName="Ширина" />
+                <div class="element__error">
+                    <ValidationMessage For="@(() => @volume.Width)" />
+                </div>
+            </div>
+
+            <div class="calculation__element element">
+                <label class="calculation__label" for="height">Высота:</label>
+                <InputNumber name="height"
+                             class="element__input"
+                             @bind-Value="@volume.Height" DisplayName="Высота" />
+                <div class="element__error">
+                    <ValidationMessage For="@(() => @volume.Height)" />
+                </div>
+            </div>
+
+            <p class="calculation__result">@result</p>
+
+            <Button Arrow=true Class="form-calculation__button" Title="Рассчитать" Type="Data.ButtonType.Submit" />
+
+        </fieldset>
+
+    </EditForm>
+</div>
+
+@code {
+    Volume volume = new Volume();
+    private double? result;
+
+    private void OnValidSubmit()
+    {
+        if (volume.Length > 0 && volume.Width > 0 && volume.Height > 0)
+        {
+            result = volume.Value;
+        }
+    }
+}
+
