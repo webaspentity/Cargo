@@ -4,7 +4,8 @@
 
     <p class="request__text">Оставьте заявку и наш менеджер ответит вам в ближайшее время</p>
 
-    <EditForm class="request__form form-request" Model="@request" method="post" OnValidSubmit="OnValidSubmit">
+    <EditForm class="request__form form-request" Model="@request" method="post" OnValidSubmit="OnValidSubmit"
+        OnInvalidSubmit="OnInvalidSubmit">
 
         <DataAnnotationsValidator />
 
@@ -18,11 +19,12 @@
             </div>
 
             <div class="form-request__element element">
-                    <MudTextField Mask="@(new PatternMask("0 (000) 000-00-00"))" @bind-Value="request.Telephone" Class="element__input" Placeholder="Телефон *"/>
-                    <div class="element__error">
-                        <ValidationMessage For="@(() => @request.Telephone)" />
-                    </div>
+                <MudTextField Mask="@(new PatternMask("0 (000) 000-00-00"))" @bind-Value="request.Telephone"
+                    Class="element__input" Placeholder="Телефон *" />
+                <div class="element__error">
+                    <ValidationMessage For="@(() => @request.Telephone)" />
                 </div>
+            </div>
 
             <div class="form-request__element element">
                 <InputText name="email" class="element__input" @bind-Value="@request.Email" placeholder="Email" />
@@ -32,13 +34,14 @@
             </div>
 
             <div class="form-request__element element">
-                <InputTextArea name="question" class="element__input" @bind-Value="@request.Question" placeholder="Ваш вопрос" />
+                <InputTextArea name="question" class="element__input" @bind-Value="@request.Question"
+                    placeholder="Ваш вопрос" />
                 <div class="element__error">
                     <ValidationMessage For="@(() => @request.Question)" />
                 </div>
             </div>
 
-             <Button Arrow=true Class="form-request__button" Title="Отправить запрос" Type="Data.ButtonType.Submit" />
+            <Button Arrow=true Class="form-request__button" Title="Отправить запрос" Type="Data.ButtonType.Submit" />
 
         </fieldset>
 
@@ -51,16 +54,17 @@
     RequestModel request = new RequestModel();
 
     [Parameter]
-    public string? Class 
-    { 
-        get => cssClass; 
+    public string? Class
+    {
+        get => cssClass;
         set
         {
             cssClass = cssClass.AddClass(value);
-        } 
+        }
     }
 
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
+    [Parameter]
+    public EventCallback OnInvalidSubmit { get; set; }
 }
-
